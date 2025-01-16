@@ -45,9 +45,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 require('mason').setup({})
 require('mason-lspconfig').setup({
   handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
+      function(server_name)
+          require('lspconfig')[server_name].setup({})
+          require('lspconfig')['arduino_language_server'].setup({
+              cmd = {
+                  "arduino-language-server",
+                  "-cli-config", "~/snap/arduino-cli/57/.arduino15/arduino-cli.yaml",
+                  "-fqbn", "arduino:avr:promicro"
+              }
+          })
+      end,
   }
 })
 
