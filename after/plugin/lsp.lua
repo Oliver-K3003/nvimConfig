@@ -31,8 +31,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
     vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
     vim.keymap.set('n', '<leader>vws', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', opts)
-    vim.keymap.set('n', '<leader>vd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-    vim.keymap.set('n', '<leader>vca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set('n', '<leader>fd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+    vim.keymap.set('n', '<leader>fa', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     vim.keymap.set('n', '<leader>vrr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', '<leader>vrn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set('i', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
@@ -61,6 +61,7 @@ require('mason-lspconfig').setup({
 ---
 -- Autocompletion config
 ---
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 
 cmp.setup({
@@ -84,3 +85,7 @@ cmp.setup({
     end,
   },
 })
+cmp.event:on(
+'confirm_done',
+cmp_autopairs.on_confirm_done()
+)

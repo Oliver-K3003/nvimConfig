@@ -31,4 +31,10 @@ return{
 	-- mason
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
+	-- autopair brackets
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+	}
 }
