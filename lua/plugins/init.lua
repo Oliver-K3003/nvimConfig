@@ -5,12 +5,7 @@ return{
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 	-- color theme
-	{
-		'EdenEast/nightfox.nvim', 
-		options= {
-			transparent = true,
-		},
-	},
+    { "EdenEast/nightfox.nvim" },
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -36,5 +31,7 @@ return{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
 		config = true
-	}
+	},
+    -- hotplate
+    { 'Oliver-K3003/hotplate' }
 }
